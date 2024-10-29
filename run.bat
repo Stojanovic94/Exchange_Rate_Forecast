@@ -1,1 +1,1 @@
-streamlit run expence_prediction.py 
+streamlit run exchange_rate_forecast.py 
