@@ -20,7 +20,7 @@ To use this dataset in your project, ensure that the data file is in CSV format 
 pip install -r requirements.txt
 ```
 ```bash
-streamlit run expence_prediction.py
+streamlit run exchange_rate_forecast.py
 ```
 Once the application is running, it will automatically open in your web browser at  ```http://localhost:8501```.
 
