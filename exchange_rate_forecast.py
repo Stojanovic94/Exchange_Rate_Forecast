@@ -73,7 +73,17 @@ if 'data' in locals():
     # Initialize AutoTS model
     model_list = ["ARIMA"]
     # model_list = ["GLS", "ARIMA", "ETS", "Prophet"]
-    model = AutoTS(forecast_length=forecast_length, frequency='M', model_list=model_list, min_allowed_train_percent=0.0001)
+    model = AutoTS(forecast_length=forecast_length, 
+    frequency='M', 
+    prediction_interval=0.9,
+    transformer_list="fast",
+    drop_most_recent=1,
+    no_negatives=True ,
+    constraint=2.0 , 
+    max_generations=15,
+    num_validations=3,
+    min_allowed_train_percent=1.0000, 
+    ensemble="all")
     
     # Fit the model
     model = model.fit(data, date_col='Date', value_col='US', id_col=None)
