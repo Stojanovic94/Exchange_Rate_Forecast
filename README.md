@@ -50,7 +50,7 @@ Where:
 - **ε_t** is the white noise (error term).
 
 ## Using AutoTS for ARIMA
-The AutoTS library automates the process of selecting ARIMA parameters and fitting the model. Below is an example of how to use AutoTS to implement ARIMA for time series forecasting.
+The AutoTS library automates the process of selecting ARIMA parameters and fitting the model.
 
 ## Conclusion
 
