@@ -49,7 +49,7 @@ Where:
 - **θᵢ** are the moving average parameters.
 - **ε_t** is the white noise (error term).
 
-## Using AutoTS for ARIMA
+# Using AutoTS for ARIMA
 The AutoTS library automates the process of selecting ARIMA parameters and fitting the model.
 
 ## Conclusion
