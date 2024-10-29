@@ -49,9 +49,9 @@ Where:
 - **θᵢ** are the moving average parameters.
 - **ε_t** is the white noise (error term).
 
-# Using AutoTS for ARIMA
+## Using AutoTS for ARIMA
 The AutoTS library automates the process of selecting ARIMA parameters and fitting the model.
 
-## Conclusion
+# Conclusion
 
 This project is currently in the testing phase. The aim is to analyze and predict the EUR/USD exchange rate using various statistical and machine learning techniques. 
