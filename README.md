@@ -25,7 +25,8 @@ streamlit run exchange_rate_forecast.py
 Once the application is running, it will automatically open in your web browser at  ```http://localhost:8501```.
 
 
-![](images/image.png)
+![Prediction shown for 1 year](images/image.png)
+The model forecasts expenses for a period of one year, providing insights into expected financial trends.
 
 # ARIMA Model
 The ARIMA (AutoRegressive Integrated Moving Average) model is a popular statistical method for time series forecasting. It combines three key components:
