@@ -82,6 +82,7 @@ if 'data' in locals():
     constraint=2.0 , 
     max_generations=15,
     num_validations=3,
+    n_jobs=4,
     min_allowed_train_percent=1.0000, 
     ensemble="all")
     
