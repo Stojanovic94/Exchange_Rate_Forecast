@@ -68,10 +68,9 @@ if 'data' in locals():
     st.pyplot(plt)
     
     # Input for forecast length
-    forecast_length = st.slider("Select Forecast Length (in Months)", min_value=6, max_value=60, value=12, step=1)
+    forecast_length = st.slider("Select Forecast Length (in Months)", min_value=6, max_value=24, value=12, step=1)
 
-    # Initialize AutoTS model
-    model_list = ["ARIMA"]
+    # Initialize AutoTS mode
     # model_list = ["GLS", "ARIMA", "ETS", "Prophet"]
     model = AutoTS(forecast_length=forecast_length, 
     frequency='M', 
@@ -79,9 +78,11 @@ if 'data' in locals():
     transformer_list="fast",
     drop_most_recent=1,
     no_negatives=True ,
+    validation_method='seasonal 168',
+    model_list = ["ARIMA", "FBProphet", "ETS"],
     constraint=2.0 , 
-    max_generations=15,
-    num_validations=3,
+    max_generations=10,
+    num_validations=0,
     n_jobs=4,
     min_allowed_train_percent=1.0000, 
     ensemble="all")
@@ -106,4 +107,5 @@ if 'data' in locals():
     
     # Display final plot with forecast included
     plt.legend()
+    plt.grid(True)
     st.pyplot(plt)
