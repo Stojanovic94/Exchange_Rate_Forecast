@@ -71,7 +71,6 @@ if 'data' in locals():
     forecast_length = st.slider("Select Forecast Length (in Months)", min_value=6, max_value=24, value=12, step=1)
 
     # Initialize AutoTS mode
-    # model_list = ["GLS", "ARIMA", "ETS", "Prophet"]
     model = AutoTS(forecast_length=forecast_length, 
     frequency='M', 
     prediction_interval=0.9,
@@ -103,7 +102,7 @@ if 'data' in locals():
     forecast.index = future_dates
 
     # Plot forecast data on the same diagram
-    plt.plot(forecast.index, forecast['US'], label='ARIMA Forecast', color='green', linestyle='--')
+    plt.plot(forecast.index, forecast['US'], label='Forecast', color='green', linestyle='--')
     
     # Display final plot with forecast included
     plt.legend()
