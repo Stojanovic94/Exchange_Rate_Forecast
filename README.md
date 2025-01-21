@@ -29,8 +29,14 @@ streamlit run exchange_rate_forecast.py
 Once the application is running, it will automatically open in your web browser at  ```http://localhost:8501```.
 
 
-![Prediction shown for 1 year](images/image.png)
+![Prediction shown for 1 year](images/image.png) -OLD-
 The model forecasts exchange rate for a period of one year, providing insights into expected financial trends.
+
+
+
+## Recommended Dataset Size
+![Prediction shown for 1 year](images/image1.png)
+For the most accurate and reliable predictions, it is recommended to use datasets that are **no longer than 5 years**. Longer datasets may introduce outdated patterns that could reduce the forecasting accuracy, especially when the data trends and seasonality patterns have changed. Using a dataset with recent data (less than 5 years) ensures that the model is focused on current trends, leading to better predictions for short to medium-term forecasting.
 
 ---
 
