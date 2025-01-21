@@ -86,7 +86,7 @@ if 'data' in locals():
     max_generations=10,
     num_validations=0,
     model_list = ["ARIMA", "FBProphet", "ETS"],
-    n_jobs=6,
+    n_jobs=4,
     min_allowed_train_percent=0.9,
     validation_method='seasonal 168',    
     ensemble="all")
