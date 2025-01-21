@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import os
 from autots import AutoTS
+
+# For linear regression
 from sklearn.linear_model import LinearRegression  # For linear regression
 import numpy as np
 
@@ -38,7 +40,7 @@ if 'data' in locals():
     data.dropna(subset=['Date', 'US'], inplace=True)
     
     # Sort data by Date to ensure chronological order
-    data['Date'] = pd.to_datetime(data['Date'])
+    data['Date'] = pd.to_datetime(data['Date'], dayfirst=True)
     data = data.sort_values(by='Date')
     
     # Display basic statistics
@@ -58,32 +60,35 @@ if 'data' in locals():
     regression_line = linear_model.predict(X)
     
     # Plot historical data with linear regression line
-    plt.figure(figsize=(19, 6), dpi=100)  # Results in 1900x600 pixels
+    # Results in 1900x600 pixels
+    plt.figure(figsize=(19, 6), dpi=100)  
     plt.plot(data['Date'], data['US'], label='Historical Exchange Rate', color='blue')
     plt.plot(data['Date'], regression_line, label='Linear Regression Line', color='red', linestyle='--')
     plt.xlabel("Date")
     plt.ylabel("US")
     plt.title("Exchange Rate with Linear Regression Line")
     plt.legend()
+    plt.grid(True)
     st.pyplot(plt)
     
     # Input for forecast length
-    forecast_length = st.slider("Select Forecast Length (in Months)", min_value=6, max_value=24, value=12, step=1)
+    forecast_length = st.slider("Select Forecast Length (in Months)", 
+    min_value=6, max_value=24, value=12, step=1)
 
-    # Initialize AutoTS mode
+    # Initialize AutoTS model
     model = AutoTS(forecast_length=forecast_length, 
     frequency='M', 
     prediction_interval=0.9,
     transformer_list="fast",
-    drop_most_recent=1,
+    drop_most_recent=0,
     no_negatives=True ,
-    validation_method='seasonal 168',
-    model_list = ["ARIMA", "FBProphet", "ETS"],
     constraint=2.0 , 
     max_generations=10,
     num_validations=0,
-    n_jobs=4,
-    min_allowed_train_percent=1.0000, 
+    model_list = ["ARIMA", "FBProphet", "ETS"],
+    n_jobs=6,
+    min_allowed_train_percent=0.9,
+    validation_method='seasonal 168',    
     ensemble="all")
     
     # Fit the model
@@ -98,7 +103,17 @@ if 'data' in locals():
 
     # Generate future dates for forecast plotting
     last_date = data['Date'].max()
-    future_dates = pd.date_range(last_date + pd.DateOffset(months=1), periods=forecast_length, freq='M')
+    
+    # Start from the last existing date
+    future_dates = pd.date_range(last_date, periods=forecast_length + 1, freq='M')[1:]
+    
+    
+    # Adjust forecast to remove y-axis offset
+    # Last value in the historical data
+    last_historical_value = data['US'].iloc[-1]
+
+    # Align first forecast point
+    forecast['US'] = forecast['US'] + (last_historical_value - forecast['US'].iloc[0])
     forecast.index = future_dates
 
     # Plot forecast data on the same diagram
