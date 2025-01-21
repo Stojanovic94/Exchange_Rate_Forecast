@@ -40,6 +40,25 @@ For the most accurate and reliable predictions, it is recommended to use dataset
 
 ---
 
+## Limitations for Cryptocurrency Forecasting
+
+While AutoTS is a powerful tool for general time series forecasting, it may not be the best choice for **cryptocurrency forecasting** due to the following reasons:
+
+1. **High Volatility**:  
+   Cryptocurrencies experience significant volatility with frequent and unpredictable price swings. The chaotic nature of crypto markets makes it harder for models like ARIMA, ETS, and even machine learning methods to effectively capture trends and make accurate forecasts over time.
+
+2. **Market Shocks and Sudden Movements**:  
+   Cryptocurrencies can experience sudden price jumps or drops due to news, government regulations, or investor sentiment. These events introduce noise that traditional models often fail to account for, making forecasting difficult.
+
+3. **Short-Term Unpredictability**:  
+   Crypto markets can change drastically in a very short period of time, and past data may not always be relevant. A model trained on historical data may not be able to predict sudden changes or new trends that emerge in the market.
+
+4. **Outlier Data Points**:  
+   In cryptocurrency datasets, you may encounter extreme outliers—such as large price fluctuations due to pump-and-dump schemes—that can skew the predictions and lead to less reliable results.
+
+
+---
+
 ## Using AutoTS
 AutoTS (Automated Time Series) is a Python library designed to simplify and optimize the process of time series forecasting. It automates model selection, hyperparameter tuning, and ensembling, making it ideal for beginners and professionals looking to streamline their forecasting workflows.
  AutoTS abstracts away much of the complexity of time series forecasting. With a few lines of code, you can test multiple models and identify the best one based on performance metrics.
