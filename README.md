@@ -1,5 +1,5 @@
 # Exchange Rate Forecast
-Exchange Rate Forecast using an ARIMA (AutoRegressive Integrated Moving Average) model.
+Exchange Rate Forecast using forecasting models such as ARIMA, ETS, and FBProphet.
 
 ---
 ## Overview
@@ -33,34 +33,72 @@ Once the application is running, it will automatically open in your web browser 
 The model forecasts exchange rate for a period of one year, providing insights into expected financial trends.
 
 ---
-# ARIMA Model
-The ARIMA (AutoRegressive Integrated Moving Average) model is a popular statistical method for time series forecasting. It combines three key components:
-- **AR (AutoRegressive)**: A model that uses the dependency between an observation and a number of lagged observations.
-- **I (Integrated)**: The process of differencing the data to make it stationary.
-- **MA (Moving Average)**: A model that uses the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+## Using AutoTS
+AutoTS (Automated Time Series) is a Python library designed to simplify and optimize the process of time series forecasting. It automates model selection, hyperparameter tuning, and ensembling, making it ideal for beginners and professionals looking to streamline their forecasting workflows.
+ AutoTS abstracts away much of the complexity of time series forecasting. With a few lines of code, you can test multiple models and identify the best one based on performance metrics.
 
 ---
-## ARIMA Formula
-The ARIMA model is generally represented as **ARIMA(p, d, q)**, where:
-- **p**: Number of lag observations included in the model (AR term).
-- **d**: Number of times the raw observations are differenced (I term).
-- **q**: Size of the moving average window (MA term).
 
-The model can be expressed as:
+## Models Used  
 
-**Y_t = φ₁Y_{t-1} + φ₂Y_{t-2} + ... + φₚY_{t-p} + θ₁ε_{t-1} + θ₂ε_{t-2} + ... + θₖε_{t-q} + ε_t**
+### 1. ARIMA (AutoRegressive Integrated Moving Average)  
+The ARIMA model combines three components:  
+- **AR (AutoRegressive)**: Relates current observations to previous ones.  
+- **I (Integrated)**: Makes the series stationary via differencing.  
+- **MA (Moving Average)**: Models the relationship between current and previous error terms.
 
-Where:
-- **Y_t** is the value at time **t**.
-- **φᵢ** are the autoregressive parameters.
-- **θᵢ** are the moving average parameters.
-- **ε_t** is the white noise (error term).
+#### ARIMA Formula:  
+**Y_t = φ₁Y_{t-1} + φ₂Y_{t-2} + ... + φₚY_{t-p} + θ₁ε_{t-1} + θ₂ε_{t-2} + ... + θₓε_{t-q} + ε_t**  
+
+Where:  
+- **Y_t**: Value at time `t`.  
+- **φ₁, φ₂, ..., φₚ**: Autoregressive coefficients.  
+- **θ₁, θ₂, ..., θₓ**: Moving average coefficients.  
+- **ε_t**: Error term at time `t`.  
+
+ARIMA is defined as **ARIMA(p, d, q)**, where:  
+- **p**: Lag order.  
+- **d**: Degree of differencing.  
+- **q**: Order of the moving average.
 
 ---
-## Using AutoTS for ARIMA
-The AutoTS library automates the process of selecting ARIMA parameters and fitting the model.
+
+### 2. ETS (Error, Trend, Seasonality)  
+ETS is a framework for exponential smoothing models that incorporate:  
+- **Error (E)**: Additive or multiplicative error term.  
+- **Trend (T)**: Captures trends over time.  
+- **Seasonality (S)**: Accounts for recurring patterns.
+
+#### ETS Formula:  
+The general ETS model is expressed as:  
+**Y_t = [Level_t + Trend_t + Seasonality_t] × Error_t**
+
+Where:  
+- **Level_t**: Smoothed average at time `t`.  
+- **Trend_t**: Trend component.  
+- **Seasonality_t**: Seasonal effect.  
+- **Error_t**: Residual/error term.
 
 ---
+
+### 3. FBProphet  
+FBProphet, developed by Meta, is a robust forecasting tool that handles irregular data and strong seasonality. It models:  
+- **Trend**: Captures long-term increases or decreases.  
+- **Seasonality**: Accounts for periodic patterns.  
+- **Holiday Effects**: Adjusts for specific dates.
+
+#### FBProphet Formula:  
+**y(t) = g(t) + s(t) + h(t) + ε_t**
+
+Where:  
+- **g(t)**: Trend function for non-periodic changes.  
+- **s(t)**: Periodic seasonal component.  
+- **h(t)**: Effects of holidays.  
+- **ε_t**: Error term.
+
+---
+
 # Conclusion
 
 This project is currently in the testing phase. The aim is to analyze and predict the EUR/USD exchange rate using various statistical and machine learning techniques. 
